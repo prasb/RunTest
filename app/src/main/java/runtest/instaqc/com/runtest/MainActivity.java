@@ -1,29 +1,42 @@
 package runtest.instaqc.com.runtest;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText input;
+    Button btn;
+    TextView out;
+    String command;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        input = (EditText)findViewById(R.id.txt);
+        btn = (Button)findViewById(R.id.btn);
+        out = (TextView)findViewById(R.id.out);
+        btn.setOnClickListener(new View.OnClickListener() {
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                ShellExecutor exe = new ShellExecutor();
+                command = input.getText().toString();
+
+                String outp = exe.Executer(command);
+                out.setText(outp);
+                Log.d("Output", outp);
             }
         });
+
     }
+
 
 }

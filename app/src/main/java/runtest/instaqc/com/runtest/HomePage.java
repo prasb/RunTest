@@ -1,7 +1,6 @@
 package runtest.instaqc.com.runtest;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,7 +15,7 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
+        addListenerOnButton();
     }
 
     public void addListenerOnButton() {
@@ -29,7 +28,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 Intent browserIntent =
-                        new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.mkyong.com"));
+                        new Intent( arg0.getContext(),MainActivity.class);
                 startActivity(browserIntent);
 
             }
